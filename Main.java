@@ -105,20 +105,20 @@ public class Main {
     public int[] squareUp(int n) {
         int[]Array = new int[n*n];
         int counter=Array.length-1;
-        int num=0;
-        int ber=n+1;
+        int num;
+        int OuterIterator=n+1;
 
         for (int z=0;z<n;z++)
         {
             Mark1:
             {
-                ber--;
+                OuterIterator--;
                 for (int i = counter; i > 0; i = i - n) {
                     counter = counter-n;
                     num = 1;
                     for (int j = 0; j < n; j++) {
                         Array[i - j] = num++;
-                        if (num > ber)
+                        if (num > OuterIterator)
                             break Mark1;
                     }
                 }
