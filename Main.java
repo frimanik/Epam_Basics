@@ -23,17 +23,15 @@ public class Main {
     //Array3 - fix34
     public int[] fix34(int[] nums) {
         int temp = 0;
-        for (int i = 0; i < nums.length; i++) {
+        for (int i = 0; i < nums.length; i++)
             if (nums[i] == 3) {
-                for (int j = 0; j < nums.length; j++) {
+                for (int j = 0; j < nums.length; j++)
                     if (nums[j] == 4 && nums[j - 1] != 3) {
                         temp = nums[i + 1];
                         nums[i + 1] = nums[j];
                         nums[j] = temp;
                     }
-                }
             }
-        }
         return nums;
     }
 
