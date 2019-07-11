@@ -1,12 +1,6 @@
-import java.util.Arrays;
-
 public class Main {
 
     public static void main(String[] args) {
-        boolean test;
-        Main obj = new Main();
-        int[] nums = new int[]{1, 2, 1, 41};
-        System.out.println(obj.maxMirror(nums));
     }
 
     //Array3 - maxSpan
@@ -22,7 +16,7 @@ public class Main {
 
     //Array3 - fix34
     public int[] fix34(int[] nums) {
-        int temp = 0;
+        int temp;
         for (int i = 0; i < nums.length; i++)
             if (nums[i] == 3) {
                 for (int j = 0; j < nums.length; j++)
@@ -37,7 +31,7 @@ public class Main {
 
     //Array3 - fix45
     public int[] fix45(int[] nums) {
-        int temp = 0;
+        int temp;
         for (int i = 0; i < nums.length; i++)
             if (nums[i] == 4)
                 for (int j = 0; j < nums.length; j++)
@@ -58,20 +52,21 @@ public class Main {
 
     //Array3 -canBalance
     public boolean canBalance(int[] nums) {
-        int LeftPart = 0;
-        int RightPart = 0;
+        int leftPart;
+        int rightPart;
         boolean result = false;
+
         for (int i = 0; i < nums.length; i++) {
-            RightPart = 0;
-            LeftPart = 0;
+            rightPart = 0;
+            leftPart = 0;
 
             for (int z = 0; z < nums.length - i; z++)
-                LeftPart += nums[z];
+                leftPart += nums[z];
 
             for (int j = nums.length; j > nums.length - i; j--) {
-                RightPart += nums[j - 1];
+                rightPart += nums[j - 1];
             }
-            if (LeftPart == RightPart)
+            if (leftPart == rightPart)
                 result = true;
 
         }
@@ -81,8 +76,8 @@ public class Main {
     //Array3-linerIn
     public boolean linearIn(int[] outer, int[] inner) {
         int length = 0;
-        for (int i = 0; i < inner.length; i++) {
-            for (int j = 0; j < outer.length; j++) {
+        for (int i : inner) {
+            for (int j : outer) {
                 if (inner[i] == outer[j]) {
                     length++;
                     break;
@@ -116,39 +111,37 @@ public class Main {
 
     //Array3 -seriesUp
     public int[] seriesUp(int n) {
-        int[] Pattern = new int[n * (n + 1) / 2];
-        int series = 0;
-        int num = 0;
-        for (int z = 0; z < n; z++) {
-            OuterBreak:
-            {
-                series++;
-                for (int i = 0; i < Pattern.length; i++) {
-                    for (int j = 0; j < series; j++) {
-                        Pattern[num] = j + 1;
-                        num++;
-                    }
-                    break OuterBreak;
-                }
+        int[] nums = new int[n * (n + 1) / 2];
+        int capacity = 1;
+        int i = 0;
+
+        while (i <= nums.length - 1) {
+            for (int j = 1; j <= capacity; j++) {
+                nums[i] = j;
+                i++;
             }
+            capacity++;
         }
-        return Pattern;
+        return nums;
     }
 
     //Array3 - mixMirror
     public int maxMirror(int[] nums) {
         int max = 0;
-        for (int i = 0; i < nums.length; ++i)
-            for (int j = max + 1; j < nums.length - i + 1; ++j)
+        for (int i = 0; i < nums.length; ++i) {
+            for (int j = max + 1; j < nums.length - i + 1; ++j) {
                 for (int k = i; k < nums.length - j + 1; ++k) {
-                    Boolean mir = true;
-                    for (int m = 0; mir && m < j; ++m)
+                    boolean mir = true;
+                    for (int m = 0; mir && m < j; ++m) {
                         mir = nums[i + m] == nums[k + j - m - 1];
-                    if (mir) max = j;
+                        if (mir) {
+                            max = j;
+                        }
+                    }
                 }
+            }
+        }
         return max;
     }
-
-
 }
 
