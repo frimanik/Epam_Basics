@@ -68,7 +68,6 @@ public class Main {
             }
             if (leftPart == rightPart)
                 result = true;
-
         }
         return result;
     }
@@ -102,9 +101,7 @@ public class Main {
                 counter = 0;
                 control--;
             }
-
             counter++;
-
         }
         return array;
     }
